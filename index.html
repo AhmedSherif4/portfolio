@@ -1479,7 +1479,7 @@
                 const elementTop = el.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
 
-                if (elementTop < windowHeight - 100) {
+                if (elementTop < windowHeight) {
                     el.classList.add('visible');
                 }
             });
@@ -1536,21 +1536,6 @@
             });
         });
 
-        // All anchors are handled by the generic handler above now that href="#top" is used
-        // But we keep this for extra safety or can remove it. Let's make it more robust.
-        const logo = document.querySelector('.logo');
-        if (logo) {
-            logo.addEventListener('click', (e) => {
-                const target = document.querySelector('#top');
-                if (target) {
-                    e.preventDefault();
-                    smoothScrollTo(target, 800);
-                    document.querySelectorAll('.nav-links a').forEach(link => {
-                        link.style.color = '';
-                    });
-                }
-            });
-        }
     </script>
 </body>
 </html>
