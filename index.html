@@ -973,13 +973,13 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <div class="cursor-glow" id="cursor"></div>
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <!-- Navigation -->
     <nav>
-        <a href="#" class="logo">AS.</a>
+        <a href="#top" class="logo">AS.</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -1170,10 +1170,10 @@
                     <div class="project-image">
                         <div class="project-mockup">
                             <div class="phone-frame">
-                                <img src="./images/tassese1.webp" alt="Tasesse app screenshot - course list">
+                                <img src="images/tassese1.webp" alt="Tasesse app screenshot - course list">
                             </div>
                             <div class="phone-frame">
-                                <img src="./images/tassese2.webp" alt="Tasesse app screenshot - quiz interface">
+                                <img src="images/tassese2.webp" alt="Tasesse app screenshot - quiz interface">
                             </div>
                         </div>
                     </div>
@@ -1218,10 +1218,10 @@
                     <div class="project-image">
                         <div class="project-mockup">
                             <div class="phone-frame">
-                                <img src="./images/mideo1.webp" alt="Mideo app screenshot - medical learning">
+                                <img src="images/mideo1.webp" alt="Mideo app screenshot - medical learning">
                             </div>
                             <div class="phone-frame">
-                                <img src="./images/mideo2.webp" alt="Mideo app screenshot - appointments">
+                                <img src="images/mideo2.webp" alt="Mideo app screenshot - appointments">
                             </div>
                         </div>
                     </div>
@@ -1265,10 +1265,10 @@
                     <div class="project-image">
                         <div class="project-mockup">
                             <div class="phone-frame">
-                                <img src="./images/medking1.webp" alt="MedKing app screenshot - courses">
+                                <img src="images/medking1.webp" alt="MedKing app screenshot - courses">
                             </div>
                             <div class="phone-frame">
-                                <img src="./images/medking2.webp" alt="MedKing app screenshot - video lectures">
+                                <img src="images/medking2.webp" alt="MedKing app screenshot - video lectures">
                             </div>
                         </div>
                     </div>
@@ -1507,7 +1507,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return; // Ignore empty hash links (like the logo)
+                if (targetId === '#' || targetId === '') return;
 
                 e.preventDefault();
                 const target = document.querySelector(targetId);
@@ -1525,19 +1525,19 @@
             });
         });
 
-        // Logo scroll to top
+        // All anchors are handled by the generic handler above now that href="#top" is used
+        // But we keep this for extra safety or can remove it. Let's make it more robust.
         const logo = document.querySelector('.logo');
         if (logo) {
             logo.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-                // Reset active state on nav links
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.style.color = '';
-                });
+                const target = document.querySelector('#top');
+                if (target) {
+                    e.preventDefault();
+                    smoothScrollTo(target, 800);
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.style.color = '';
+                    });
+                }
             });
         }
     </script>
