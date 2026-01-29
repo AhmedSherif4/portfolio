@@ -1170,10 +1170,10 @@
                     <div class="project-image">
                         <div class="project-mockup">
                             <div class="phone-frame">
-                                <img src="images/tassese1.webp" alt="Tasesse app screenshot - course list">
+                                <img src="./images/tassese1.webp" alt="Tasesse app screenshot - course list">
                             </div>
                             <div class="phone-frame">
-                                <img src="images/tassese2.webp" alt="Tasesse app screenshot - quiz interface">
+                                <img src="./images/tassese2.webp" alt="Tasesse app screenshot - quiz interface">
                             </div>
                         </div>
                     </div>
@@ -1218,10 +1218,10 @@
                     <div class="project-image">
                         <div class="project-mockup">
                             <div class="phone-frame">
-                                <img src="images/mideo1.webp" alt="Mideo app screenshot - medical learning">
+                                <img src="./images/mideo1.webp" alt="Mideo app screenshot - medical learning">
                             </div>
                             <div class="phone-frame">
-                                <img src="images/mideo2.webp" alt="Mideo app screenshot - appointments">
+                                <img src="./images/mideo2.webp" alt="Mideo app screenshot - appointments">
                             </div>
                         </div>
                     </div>
@@ -1265,10 +1265,10 @@
                     <div class="project-image">
                         <div class="project-mockup">
                             <div class="phone-frame">
-                                <img src="images/medking1.webp" alt="MedKing app screenshot - courses">
+                                <img src="./images/medking1.webp" alt="MedKing app screenshot - courses">
                             </div>
                             <div class="phone-frame">
-                                <img src="images/medking2.webp" alt="MedKing app screenshot - video lectures">
+                                <img src="./images/medking2.webp" alt="MedKing app screenshot - video lectures">
                             </div>
                         </div>
                     </div>
@@ -1506,8 +1506,10 @@
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const targetId = this.getAttribute('href');
+                if (targetId === '#') return; // Ignore empty hash links (like the logo)
+
+                e.preventDefault();
                 const target = document.querySelector(targetId);
                 if (target) {
                     smoothScrollTo(target, 800);
