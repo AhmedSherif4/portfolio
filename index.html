@@ -1522,6 +1522,22 @@
                 }
             });
         });
+
+        // Logo scroll to top
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                // Reset active state on nav links
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.style.color = '';
+                });
+            });
+        }
     </script>
 </body>
 </html>
