@@ -104,6 +104,14 @@
             font-style: italic;
             color: var(--text-primary);
             text-decoration: none;
+            position: relative;
+            z-index: 1000;
+            cursor: pointer !important;
+            padding: 0.5rem 0;
+        }
+
+        .logo:hover {
+            color: var(--accent);
         }
 
         .nav-links {
@@ -551,6 +559,8 @@
             height: 100%;
             object-fit: cover;
             border-radius: 18px;
+            display: block;
+            background: #1a1a1a;
         }
 
         .phone-screen {
@@ -973,7 +983,8 @@
         }
     </style>
 </head>
-<body id="top">
+<body id="top-body">
+    <div id="top"></div>
     <div class="cursor-glow" id="cursor"></div>
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
@@ -1509,9 +1520,9 @@
                 const targetId = this.getAttribute('href');
                 if (targetId === '#' || targetId === '') return;
 
-                e.preventDefault();
                 const target = document.querySelector(targetId);
                 if (target) {
+                    e.preventDefault();
                     smoothScrollTo(target, 800);
 
                     // Update active state on nav links
